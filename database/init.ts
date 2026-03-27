@@ -42,3 +42,5 @@ class Database {
     return data.rows[0];
   }
 }
+
+export const database = new Database();
