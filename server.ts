@@ -3,6 +3,7 @@ import { createServer } from "http";
 import { WebSocketServer } from "ws";
 import { database } from "./database/init";
 import { usersRouter } from "./users/usersRouter";
+import { errorMiddleware } from "./error/errorMiddleware";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -17,6 +18,7 @@ app.use(
 );
 app.use(express.json());
 app.use("/users", usersRouter);
+app.use(errorMiddleware);
 
 const server = createServer(app);
 const wss: WebSocketServer = new WebSocketServer({ server });

@@ -2,6 +2,7 @@ import { getUserByEmail, createUser } from "./usersRepository";
 import { hash, compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { config } from "dotenv";
+import { HttpError } from "../error/HttpError";
 
 config();
 
@@ -12,7 +13,7 @@ export const registerUser = async (
 ): Promise<{ message: string }> => {
   const registredUser = await getUserByEmail(email);
   if (registredUser) {
-    throw new Error("User already exists");
+    throw new HttpError("User already exists", 409);
   }
   const hashedPassword = await hash(password, 10);
   await createUser(username, email, hashedPassword);
@@ -25,14 +26,14 @@ export const loginUser = async (
 ): Promise<{ token: string; userId: number; username: string }> => {
   const registredUser = await getUserByEmail(email);
   if (!registredUser) {
-    throw new Error("Unauthorized");
+    throw new HttpError("Unauthorized", 401);
   }
   if (!registredUser.password) {
-    throw new Error("Invalid user data");
+    throw new HttpError("Invalid user data", 400);
   }
   const isSame = await compare(password, registredUser.password);
   if (!isSame) {
-    throw new Error("Incorrect Credentials");
+    throw new HttpError("Incorrect Credentials", 401);
   }
   const token = sign(
     {
