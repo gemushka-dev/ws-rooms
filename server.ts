@@ -6,6 +6,7 @@ import { usersRouter } from "./users/usersRouter";
 import { errorMiddleware } from "./error/errorMiddleware";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { roomsRouter } from "./rooms/roomsRouter";
 
 const PORT: number = 3500;
 
@@ -18,6 +19,7 @@ app.use(
 );
 app.use(express.json());
 app.use("/users", usersRouter);
+app.use("/rooms", roomsRouter);
 app.use(errorMiddleware);
 
 const server = createServer(app);
