@@ -1,9 +1,14 @@
 import { randomInt } from "crypto";
 import { Room } from "../../types/roomType";
+import { WebSocket } from "ws";
+import { CustomWebSocket } from "../../types/CustomWebSocket";
 
 class RoomStore {
-  rooms = new Map<number, Room>();
+  private rooms = new Map<number, Room>();
 
+  getRoom(roomId: number) {
+    return this.rooms.get(roomId);
+  }
   createRoom() {
     let uniqId;
     do {
@@ -11,7 +16,7 @@ class RoomStore {
     } while (this.rooms.has(uniqId));
     const room: Room = {
       id: uniqId,
-      clients: new Set<WebSocket>(),
+      clients: new Set<CustomWebSocket>(),
       expiresAt: Date.now() + 60 * 60 * 1000,
     };
     room.timer = setTimeout(
@@ -28,7 +33,7 @@ class RoomStore {
     const room = this.rooms.get(roomId);
     if (!room) return;
     if (room.timer) clearTimeout(room.timer);
-    room.clients.forEach((ws) => {
+    room.clients.forEach((ws: CustomWebSocket) => {
       if (ws.readyState === WebSocket.OPEN) {
         ws.close(1000, "Room expired");
       }
@@ -38,13 +43,13 @@ class RoomStore {
     this.rooms.delete(roomId);
   }
 
-  addUser(roomId: number, ws: WebSocket) {
+  addUser(roomId: number, ws: CustomWebSocket) {
     const room = this.rooms.get(roomId);
     if (!room) return;
     room.clients.add(ws);
   }
 
-  deleteUser(roomId: number, ws: WebSocket) {
+  deleteUser(roomId: number, ws: CustomWebSocket) {
     const room = this.rooms.get(roomId);
     if (!room) return;
     room.clients.delete(ws);
