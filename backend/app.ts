@@ -1,6 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import { usersRouter } from "./src/users/usersRouter";
+import { usersRouter } from "./src/routes/usersRouter";
 import { roomsRouter } from "./src/rooms/roomsRouter";
 import { errorMiddleware } from "./src/error/errorMiddleware";
 
