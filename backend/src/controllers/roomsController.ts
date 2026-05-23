@@ -1,4 +1,4 @@
-import { createRoom } from "./roomsService";
+import { createRoom } from "../services/roomsService";
 import { Request, Response, NextFunction } from "express";
 
 export const createRoomController = (

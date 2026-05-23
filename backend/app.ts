@@ -1,7 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import { usersRouter } from "./src/routes/usersRouter";
-import { roomsRouter } from "./src/rooms/roomsRouter";
+import { roomsRouter } from "./src/routes/roomsRouter";
 import { errorMiddleware } from "./src/error/errorMiddleware";
 
 export const app = express();
