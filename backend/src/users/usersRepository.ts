@@ -1,4 +1,4 @@
-import { database } from "../database/init";
+import { database } from "../models/database/init";
 
 export const getUserByEmail = async (email: string) =>
   database.getUserByEmail(email);

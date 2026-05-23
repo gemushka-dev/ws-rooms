@@ -1,18 +1,5 @@
 import { pool } from "./pool";
-
-type User = {
-  username: string;
-  email: string;
-  password: string;
-};
-
-type DBdata = {
-  user_id: number;
-  username: string;
-  email: string;
-  password?: string;
-  created_at: Date;
-};
+import { User, DBdata } from "../../types/client.database";
 
 class Database {
   async init() {
