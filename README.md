@@ -51,6 +51,8 @@ WebSocket-based chat server with user registration and room support.
 4. Config `package.json` file
 5. Run `npm run dev` to start listening
 
+**Tip**: Run the frontend and backend on the same host and port (via proxy) to handle credentials and cookies properly during the WebSocket handshake
+
 Package.json:
 
 ```Package.json

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev server.ts"
+    "dev": "ts-node-dev server.ts",
+    "build": "tsc --build ./tsconfig.json"
   },
   "keywords": [],
   "author": "",

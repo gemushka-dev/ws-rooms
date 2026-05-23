@@ -1,12 +1,12 @@
 import express from "express";
 import { createServer } from "http";
 import { WebSocketServer } from "ws";
-import { database } from "./database/init";
-import { usersRouter } from "./users/usersRouter";
-import { errorMiddleware } from "./error/errorMiddleware";
+import { database } from "./src/database/init";
+import { usersRouter } from "./src/users/usersRouter";
+import { errorMiddleware } from "./src/error/errorMiddleware";
 import cookieParser from "cookie-parser";
-import { roomsRouter } from "./rooms/roomsRouter";
-import { setupWs } from "./ws/wsSetup";
+import { roomsRouter } from "./src/rooms/roomsRouter";
+import { setupWs } from "./src/ws/wsSetup";
 
 const PORT: number = 3500;
 
