@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0.8rem;
+}
+
+.nav__logo {
+  text-align: center;
+  font-weight: 700;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.list__item {
+  text-align: center;
+  font-size: 1.1rem;
+  transition: all 0.5s ease-out;
+}
+
+.list__item:hover {
+  font-size: 1.25rem;
+}
