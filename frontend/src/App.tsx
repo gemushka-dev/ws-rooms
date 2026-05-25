@@ -1,20 +1,19 @@
-import { Link, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import { Homepage } from "./pages/Homepage";
 import { Loginpage } from "./pages/Loginpage";
 import { Registerpage } from "./pages/Registerpage";
+import "./style/main.css";
+import { Layout } from "./components/Layout";
 
 export const App = () => {
   return (
     <>
-      <header>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </header>
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Loginpage />} />
-        <Route path="/register" element={<Registerpage />} />
+        <Route path="/" element={<Layout data={null} />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Loginpage />} />
+          <Route path="/register" element={<Registerpage />} />
+        </Route>
       </Routes>
     </>
   );
