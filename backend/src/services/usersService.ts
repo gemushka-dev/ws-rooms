@@ -38,6 +38,7 @@ export const loginUser = async (
   const token = sign(
     {
       userId: registeredUser.user_id,
+      username: registeredUser.username,
     },
     process.env.SECRET as string,
     {
