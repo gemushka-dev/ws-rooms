@@ -3,3 +3,8 @@ export type User = {
   emailRef: React.RefObject<HTMLInputElement | null>;
   passwordRef: React.RefObject<HTMLInputElement | null>;
 };
+
+export type UserLoginType = {
+  emailRef: React.RefObject<HTMLInputElement | null>;
+  passwordRef: React.RefObject<HTMLInputElement | null>;
+};
