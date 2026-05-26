@@ -3,6 +3,7 @@ import { NavAuthData, NavData } from "../data/navData";
 import styles from "../style/navbar.module.css";
 
 export const Navbar = ({ data }: { data: object | null }) => {
+  console.log(data);
   return (
     <nav className={styles.nav}>
       <h2 className={styles.nav__logo}>Logo</h2>
