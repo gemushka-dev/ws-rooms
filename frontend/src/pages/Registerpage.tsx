@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { createRegisterHandler } from "../handlers/RegisterHandler";
+import { createRegisterHandler } from "../handlers/registerHandler";
 import styles from "../style/register.module.css";
 import { Link } from "react-router";
 
