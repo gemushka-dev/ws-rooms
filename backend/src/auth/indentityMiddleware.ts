@@ -15,7 +15,7 @@ export const identityMiddleware = async (
     if (!cookie) {
       throw new HttpError("Not Authenticated", 401);
     }
-    const payload = verify(cookie, String(process.env.JWT_SECRET)) as {
+    const payload = verify(cookie, String(process.env.SECRET)) as {
       userId: number;
       username: string;
     };
