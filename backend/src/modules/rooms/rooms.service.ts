@@ -37,7 +37,13 @@ class RoomService {
         cl.readyState === WebSocket.OPEN
       ) {
         try {
-          cl.send(JSON.stringify({ userId: ws.user.userId, text: text }));
+          cl.send(
+            JSON.stringify({
+              userId: ws.user.userId,
+              username: ws.user.username,
+              text: text,
+            }),
+          );
         } catch (e) {
           console.error("Something went wrong: ", e);
           rooms.deleteUser(ws.roomId!, cl);

@@ -25,6 +25,7 @@ class RoomGateway {
     try {
       const payload = verify(jwt, process.env.SECRET as string) as {
         userId: number;
+        username: string;
       };
 
       csWs.user = payload;
