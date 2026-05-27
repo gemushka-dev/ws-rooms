@@ -7,9 +7,13 @@ import { Layout } from "./components/Layout";
 import { useAuth } from "./hooks/useAuth";
 import { Room } from "./pages/Room";
 import { Chat } from "./pages/Chat";
+import { useRef } from "react";
+import { createConnectWebSocket } from "./handlers/connectHandler";
 
 export const App = () => {
+  const socketRef = useRef<WebSocket | null>(null);
   const { data } = useAuth();
+  const connectWebSocket = createConnectWebSocket(socketRef);
   return (
     <>
       <Routes>
@@ -17,7 +21,10 @@ export const App = () => {
           <Route path="/" element={<Homepage />} />
           {data ? (
             <>
-              <Route path="/room" element={<Room />} />
+              <Route
+                path="/room"
+                element={<Room connectWebSocket={connectWebSocket} />}
+              />
               <Route path="/room/:id" element={<Chat />} />
             </>
           ) : (

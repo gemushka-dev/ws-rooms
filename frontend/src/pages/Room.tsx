@@ -2,7 +2,11 @@ import { useRef } from "react";
 import { createRoomHandler } from "../handlers/roomHandlers";
 import styles from "../style/rooms.module.css";
 
-export const Room = () => {
+export const Room = ({
+  connectWebSocket,
+}: {
+  connectWebSocket: (roomId: number) => void;
+}) => {
   const roomIdRef = useRef<HTMLInputElement>(null);
   const roomHandler = createRoomHandler(roomIdRef);
   return (
@@ -26,7 +30,12 @@ export const Room = () => {
             className={styles.room__input}
             ref={roomIdRef}
           />
-          <button className={styles.room__button}>Join room</button>
+          <button
+            className={styles.room__button}
+            onClick={() => connectWebSocket(Number(roomIdRef.current!.value))}
+          >
+            Join room
+          </button>
         </div>
       </section>
     </>
