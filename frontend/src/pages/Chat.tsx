@@ -1,6 +1,18 @@
 import { useParams } from "react-router";
+import { useState } from "react";
+import type { FrontendMessageType } from "../type/MessageType";
 
-export const Chat = () => {
+export const Chat = ({ socket }: { socket: WebSocket }) => {
   const { id } = useParams();
-  return <h1>Room: {id}</h1>;
+  const [messages, setMessages] = useState<FrontendMessageType>();
+  return (
+    <section className="chat">
+      <h1 className="chat__id">Room id: {id}</h1>
+      <div className="chat__window"></div>
+      <div className="chat__footer">
+        <input className="chat__input" />
+        <button className="chat__button">➤</button>
+      </div>
+    </section>
+  );
 };
