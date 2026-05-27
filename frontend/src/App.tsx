@@ -25,7 +25,10 @@ export const App = () => {
                 path="/room"
                 element={<Room connectWebSocket={connectWebSocket} />}
               />
-              <Route path="/room/:id" element={<Chat />} />
+              <Route
+                path="/room/:id"
+                element={<Chat socket={socketRef.current} data={data} />}
+              />
             </>
           ) : (
             <>
