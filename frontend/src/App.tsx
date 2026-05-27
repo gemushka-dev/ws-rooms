@@ -5,8 +5,8 @@ import { Registerpage } from "./pages/Registerpage";
 import "./style/main.css";
 import { Layout } from "./components/Layout";
 import { useAuth } from "./hooks/useAuth";
-import { Createpage } from "./pages/Createpage";
-import { Joinpage } from "./pages/Joinpage";
+import { Room } from "./pages/Room";
+import { Chat } from "./pages/Chat";
 
 export const App = () => {
   const { data } = useAuth();
@@ -17,8 +17,8 @@ export const App = () => {
           <Route path="/" element={<Homepage />} />
           {data ? (
             <>
-              <Route path="/create" element={<Createpage />} />
-              <Route path="/join" element={<Joinpage />} />
+              <Route path="/room" element={<Room />} />
+              <Route path="/room/:id" element={<Chat />} />
             </>
           ) : (
             <>

@@ -8,6 +8,5 @@ export const NavData: NavItemType[] = [
 
 export const NavAuthData: NavItemType[] = [
   { text: "Home", link: "/" },
-  { text: "Create room", link: "/create" },
-  { text: "Join", link: "/join" },
+  { text: "Create room", link: "/room" },
 ];
