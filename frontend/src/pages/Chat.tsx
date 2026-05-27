@@ -5,6 +5,7 @@ import {
   createMessageHandler,
   createSendMessage,
 } from "../handlers/chatHandler";
+import styles from "../style/chat.module.css";
 
 export const Chat = ({
   socket,
@@ -31,20 +32,26 @@ export const Chat = ({
     if (socket != null) socket.onmessage = messageHandler;
   }, [socket]);
   return (
-    <section className="chat">
-      <h1 className="chat__id">Room id: {id}</h1>
-      <div className="chat__window">
+    <section className={styles.chat}>
+      <h1 className={styles.chat__id}>Room id: {id}</h1>
+      <div className={styles.chat__window}>
         {messages &&
           messages.map((msg) => (
-            <div className={msg.isMe ? "chat__msg mine" : "chat__msg"}>
-              {msg.username}
+            <div
+              className={
+                msg.isMe
+                  ? `${styles.chat__msg} ${styles.mine}`
+                  : styles.chat__msg
+              }
+            >
+              {msg.username === data.username ? "you" : msg.username}:{" "}
               {msg.text}
             </div>
           ))}
       </div>
-      <div className="chat__footer">
-        <input className="chat__input" ref={inputRef} />
-        <button className="chat__button" onClick={sendMessage}>
+      <div className={styles.chat__footer}>
+        <input className={styles.chat__input} ref={inputRef} />
+        <button className={styles.chat__button} onClick={sendMessage}>
           ➤
         </button>
       </div>
