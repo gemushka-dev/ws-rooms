@@ -24,6 +24,7 @@ class RoomService {
   private join(ws: CustomWebSocket, roomId: number) {
     rooms.addUser(roomId, ws);
     ws.roomId = roomId;
+    ws.send(JSON.stringify({ message: "JOINED" }));
   }
 
   private sendMessage(ws: CustomWebSocket, text: string) {
